@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'country_packages_screen.dart';
+
 
 class PackagesScreen extends StatelessWidget {
   const PackagesScreen({super.key});
@@ -18,31 +20,49 @@ class PackagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: countries.length,
-      itemBuilder: (context, index) {
-        final country = countries[index];
+    return SizedBox(
+      height: 200, // important for horizontal list
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.all(16),
+        itemCount: countries.length,
+        itemBuilder: (context, index) {
+          final country = countries[index];
 
-        return Card(
-          elevation: 3,
-          margin: const EdgeInsets.only(bottom: 16),
-          child: ListTile(
-            leading: const Icon(Icons.public, size: 32),
-            title: Text(
-              country,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+          return Container(
+            width: 200,
+            margin: const EdgeInsets.only(right: 12),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => CountryPackagesScreen(country: country),
+                  ),
+                );
+              },
+              child: Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Center(
+                  child: Text(
+                    country,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+
+
+                  ),
+                ),
               ),
             ),
-            trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-            onTap: () {
-              // Navigation will come next
-            },
-          ),
-        );
-      },
+            ),
+          );
+        },
+      ),
     );
   }
 }
