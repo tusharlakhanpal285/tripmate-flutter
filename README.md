@@ -173,3 +173,16 @@ LinkedIn: https://www.linkedin.com/in/tushar-lakhanpal-9935b3315/
 ---
 
 ⭐ If you like this project, feel free to give it a star!
+## 📱 App Screenshots
+
+| Home | My Trips screen | AI Assistant |
+|------|--------------|--------------|
+| ![Home](screenshots/home_Screen.png) | ![My Trips](screenshots/myTrips_screen.png) | ![AI Assistant](screenshots/gemini_ai_screen.png) |
+
+| My Trips detail screen | Expense Tracker | Profile |
+|--------|----------------|--------|
+| ![My Trips detail screen](screenshots/myTrips_detail_screen.png) | ![Expenses](screenshots/expense_tracker.png) | ![Profile](screenshots/profile_screen.png) |
+
+| login | Packages screen | Package Booking screen |
+|-------|-------------|--------|
+| ![Search](screenshots/login_screen.png) | ![Packages screen](screenshots/packages_screen.png) | ![Package Booking screen](screenshots/package_booking_screen.png) |
