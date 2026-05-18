@@ -174,10 +174,7 @@ class TripDetailScreen extends StatelessWidget {
                     final data =
                     doc.data()
                     as Map<String, dynamic>;
-                    totalSpent += int.tryParse(
-                        data['amount']
-                            .toString()) ??
-                        0;
+                    totalSpent += (data['amount'] as num).toInt();
                   }
                 }
 

@@ -7,7 +7,7 @@ import 'home_screen.dart';
 import 'signup_screen.dart';
 import 'forgot_password_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {  /*UI change ho sakti hai*/
   const LoginScreen({super.key});
 
   @override
@@ -15,28 +15,28 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>(); /*Ye form validation control karta hai.*/
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  bool isLoading = false;
-  bool obscurePassword = true;
+  bool isLoading = false;  /*Login button press hone par spinner show*/
+  bool obscurePassword = true; /*Password hide/show*/
 
   @override
-  void dispose() {
+  void dispose() {  /*Ye memory cleanup karta hai.*/
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
   }
 
-  Future<void> loginWithEmail() async {
-    if (!_formKey.currentState!.validate()) return;
+  Future<void> loginWithEmail() async { /*Ye function Firebase email login handle karta hai.*/
+    if (!_formKey.currentState!.validate()) return; /*if form is invalid*/
 
     try {
-      setState(() => isLoading = true);
+      setState(() => isLoading = true); /*UI change*/
 
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.signInWithEmailAndPassword( /*Firebase server ko request jaati hai:*/
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
@@ -47,9 +47,9 @@ class _LoginScreenState extends State<LoginScreen> {
         context,
         MaterialPageRoute(builder: (_) => const HomeScreen()),
       );
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) { /*Agar login fail ho:*/
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(e.message ?? "Login Failed")),
+        SnackBar(content: Text(e.message ?? "Login Failed")), /*showing this message*/
       );
     } finally {
       if (mounted) {
@@ -66,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
         GoogleAuthProvider googleProvider = GoogleAuthProvider();
         await FirebaseAuth.instance.signInWithPopup(googleProvider);
       } else {
-        final GoogleSignInAccount? googleUser =
+        final GoogleSignInAccount? googleUser = /*Mobile login*/
         await GoogleSignIn().signIn();
 
         if (googleUser == null) {
